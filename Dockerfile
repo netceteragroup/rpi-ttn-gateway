@@ -7,14 +7,14 @@ RUN apt-get update && apt-get install git iproute2 swig libftdi-dev python-dev b
 RUN git clone -b spi https://github.com/ttn-zh/ic880a-gateway.git ~/ic880a-gateway
 
 ENV INSTALL_DIR /opt/ttn-gateway
-RUN git clone https://github.com/devttys0/libmpsse.git $INSTALL_DIR
+RUN git clone https://github.com/devttys0/libmpsse.git $INSTALL_DIR/libmpsse
 WORKDIR $INSTALL_DIR/libmpsse/src
 RUN ./configure --disable-python
 RUN make
 RUN make install
 RUN ldconfig
 
-RUN git clone https://github.com/TheThingsNetwork/lora_gateway.git $INSTALL_DIR
+RUN git clone https://github.com/TheThingsNetwork/lora_gateway.git $INSTALL_DIR/lora_gateway
 
 RUN cp $INSTALL_DIR/lora_gateway/libloragw/99-libftdi.rules /etc/udev/rules.d/99-libftdi.rules
 RUN sed -i -e 's/PLATFORM= kerlink/PLATFORM= imst_rpi/g' $INSTALL_DIR/lora_gateway/libloragw/library.cfg
@@ -22,7 +22,7 @@ RUN sed -i -e 's/PLATFORM= kerlink/PLATFORM= imst_rpi/g' $INSTALL_DIR/lora_gatew
 WORKDIR $INSTALL_DIR/lora_gateway
 RUN make
 
-RUN git clone https://github.com/TheThingsNetwork/packet_forwarder.git $INSTALL_DIR
+RUN git clone https://github.com/TheThingsNetwork/packet_forwarder.git $INSTALL_DIR/packet_forwarder
 WORKDIR $INSTALL_DIR/lora_gateway/packet_forwarder 
 RUN make
 RUN mkdir $INSTALL_DIR/bin
