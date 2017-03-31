@@ -23,7 +23,7 @@ WORKDIR $INSTALL_DIR/lora_gateway
 RUN make
 
 RUN git clone https://github.com/TheThingsNetwork/packet_forwarder.git $INSTALL_DIR/packet_forwarder
-WORKDIR $INSTALL_DIR/lora_gateway/packet_forwarder 
+WORKDIR $INSTALL_DIR/packet_forwarder 
 RUN make
 RUN mkdir $INSTALL_DIR/bin
 RUN ln -s $INSTALL_DIR/packet_forwarder/poly_pkt_fwd/poly_pkt_fwd $INSTALL_DIR/bin/poly_pkt_fwd
