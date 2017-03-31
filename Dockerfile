@@ -39,5 +39,6 @@ RUN echo "{\n\t\"gateway_conf\": {\n\t\t\"gateway_ID\": \"${GATEWAY_EUI}\",\n\t\
 RUN cat $INSTALL_DIR/bin/local_conf.json
 RUN cp ~/ic880a-gateway/start.sh $INSTALL_DIR/bin/
 RUN sed -i -e 's/SX1301_RESET_BCM_PIN=25/SX1301_RESET_BCM_PIN=17/g' $INSTALL_DIR/bin/start.sh
-CMD $INSTALL_DIR/bin/start.sh
+WORKDIR $INSTALLDIR/bin
+CMD ./start.sh
 
