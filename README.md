@@ -11,7 +11,8 @@ This image is made for and tested on a Raspberry Pi 3 together with a IMST-iC880
 3. Put the SD card into your Raspberry Pi and power it up
 4. Login with user pirate and password hypriot *Note*: default is a QWERTY keyboard. If you are using a QWERTZ keyboard make sure you use the correct 'y' in the password
 5. Run `sudo apt-get update && sudo apt-get install raspi-config kbd`. During setup you can choose a different keyboard layout if you need
-6. Run 
+6. Run `raspi-config` and enable SPI interface
+7. Run 
    ```bash
     docker run -it --privileged --net=host --restart=alway \
     -e GATEWAY_EUI=YOUR_MAC_ADDRESS \
