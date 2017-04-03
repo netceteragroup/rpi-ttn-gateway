@@ -32,6 +32,6 @@ RUN cp -f $INSTALL_DIR/packet_forwarder/poly_pkt_fwd/global_conf.json $INSTALL_D
 RUN cp ~/ic880a-gateway/start.sh $INSTALL_DIR/bin/
 RUN sed -i -e 's/SX1301_RESET_BCM_PIN=25/SX1301_RESET_BCM_PIN=17/g' $INSTALL_DIR/bin/start.sh
 CMD echo "{\n\t\"gateway_conf\": {\n\t\t\"gateway_ID\": \"${GATEWAY_EUI}\",\n\t\t\"servers\": [ { \"server_address\": \"router.eu.thethings.network\", \"serv_port_up\": 1700, \"serv_port_down\": 1700, \"serv_enabled\": true } ], \n\t\t\"ref_latitude\": ${GATEWAY_LAT},\n\t\t\"ref_longitude\": ${GATEWAY_LON},\n\t\t\"ref_altitude\": ${GATEWAY_ALT},\n\t\t\"contact_email\": \"${GATEWAY_EMAIL}\",\n\t\t\"description\": \"${GATEWAY_NAME}\"  \n\t}\n}" > $INSTALL_DIR/bin/local_conf.json
-WORKDIR $INSTALLDIR/bin
+WORKDIR $INSTALL_DIR/bin
 CMD ./start.sh
 
