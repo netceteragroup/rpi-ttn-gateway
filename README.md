@@ -14,10 +14,11 @@ Here are the steps to get the host environment ready for this image:
 4. Login with user `pirate` and password `hypriot` *Note*: default keyboard layout is [QWERTY](https://en.wikipedia.org/wiki/QWERTY). If you are using a [QWERTZ](https://en.wikipedia.org/wiki/QWERTZ) keyboard make sure you use the correct 'y' in the password
 5. Run `sudo apt-get update && sudo apt-get install raspi-config kbd`. During setup you can choose a different keyboard layout if you need
 6. Run `raspi-config` and enable SPI interface `5 Interfacing Options > P4 SPI > Yes` and restart the Pi
-7. Run 
+7. Find the Pi MAC address (needed in next step) by running `cat /sys/class/net/eth0/address`
+8. Run 
    ```bash
     docker run -it --privileged --net=host --restart=always \
-    -e GATEWAY_EUI=YOUR_MAC_ADDRESS \
+    -e GATEWAY_EUI=RASPBERRY_PI_MAC_ADDRESS \
     -e GATEWAY_LAT=YOUR_LATITUDE \
     -e GATEWAY_LON=YOUR_LONGITUDE \
     -e GATEWAY_ALT=YOUR_ALTITUDE \
