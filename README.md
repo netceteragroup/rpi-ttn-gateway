@@ -11,7 +11,7 @@ Here are the steps to get the host environment ready for this image:
 1. Download the latest HypriotOS from here: https://blog.hypriot.com/downloads/
 2. Install it on a SD card. Etcher is a easy-to-use tool for this: https://etcher.io/
 3. Put the SD card into your Raspberry Pi and power it up
-4. Login with user `pirate` and password `hypriot *Note*: default is a QWERTY keyboard. If you are using a QWERTZ keyboard make sure you use the correct 'y' in the password
+4. Login with user `pirate` and password `hypriot` *Note*: default keyboard layout is [QWERTY](https://en.wikipedia.org/wiki/QWERTY). If you are using a [QWERTZ](https://en.wikipedia.org/wiki/QWERTZ) keyboard make sure you use the correct 'y' in the password
 5. Run `sudo apt-get update && sudo apt-get install raspi-config kbd`. During setup you can choose a different keyboard layout if you need
 6. Run `raspi-config` and enable SPI interface `5 Interfacing Options > P4 SPI > Yes` and restart the Pi
 7. Run 
