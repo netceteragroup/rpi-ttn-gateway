@@ -1,17 +1,17 @@
-# rpi-ttn-gateway
-Raspberry PI TTN gateway image based on Hypriot. This dockerfile is heavily influenced by the install script from https://github.com/ttn-zh/ic880a-gateway
+# Raspberry PI TTN gateway
+[![Docker Pulls](https://img.shields.io/docker/pulls/netceteragroup/rpi-ttn-gateway.svg)](https://hub.docker.com/r/netceteragroup/rpi-ttn-gateway/) [![Docker Stars](https://img.shields.io/docker/stars/netceteragroup/rpi-ttn-gateway.svg)](https://hub.docker.com/r/netceteragroup/rpi-ttn-gateway/) [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/netceteragroup/rpi-ttn-gateway/blob/master/LICENSE)
+
+Raspberry PI TTN gateway image based on Hypriot. This dockerfile is heavily influenced by the install script from [The Things Network iC880a-based gateway](https://github.com/ttn-zh/ic880a-gateway).
 
 ## Hardware Preperation
-This image is made for and tested on a Raspberry Pi 3 together with a IMST-iC880 SPI LoRaWAN concentrator:
-http://webshop.imst.de/ic880a-spi-lorawan-concentrator-868mhz.html
-
+This image is made for and tested on a Raspberry Pi 3 together with a [IMST-iC880 SPI LoRaWAN concentrator](http://webshop.imst.de/ic880a-spi-lorawan-concentrator-868mhz.html).
 
 ## OS preparation
 Here are the steps to get the host environment ready for this image:
 1. Download the latest HypriotOS from here: https://blog.hypriot.com/downloads/
 2. Install it on a SD card. Etcher is a easy-to-use tool for this: https://etcher.io/
 3. Put the SD card into your Raspberry Pi and power it up
-4. Login with user pirate and password hypriot *Note*: default is a QWERTY keyboard. If you are using a QWERTZ keyboard make sure you use the correct 'y' in the password
+4. Login with user `pirate` and password `hypriot *Note*: default is a QWERTY keyboard. If you are using a QWERTZ keyboard make sure you use the correct 'y' in the password
 5. Run `sudo apt-get update && sudo apt-get install raspi-config kbd`. During setup you can choose a different keyboard layout if you need
 6. Run `raspi-config` and enable SPI interface `5 Interfacing Options > P4 SPI > Yes` and restart the Pi
 7. Run 
@@ -26,7 +26,7 @@ Here are the steps to get the host environment ready for this image:
     netceteragroup/rpi-ttn-gateway
     ```
 
-## Optional: Building the image
+## Optional: Building the image yourself
 To build the image run
 ```bash
 docker build . 
