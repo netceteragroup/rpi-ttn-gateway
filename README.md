@@ -30,4 +30,5 @@ Here are the steps to get the host environment ready for this image:
 ## Optional: Building the image yourself
 To build the image run
 ```bash
-docker build . 
+docker build -t rpi-ttn-gateway . 
+```
