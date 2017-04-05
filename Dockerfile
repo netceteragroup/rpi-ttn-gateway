@@ -1,7 +1,7 @@
 FROM resin/rpi-raspbian
 
 # Install all required packages
-RUN apt-get update && apt-get install git iproute2 swig libftdi-dev python-dev build-essential iputils-ping WiringPi
+RUN apt-get update && apt-get install -y git iproute2 swig libftdi-dev python-dev build-essential iputils-ping WiringPi
 
 # Get the code for the ic880a-gateway
 RUN git clone -b spi https://github.com/ttn-zh/ic880a-gateway.git ~/ic880a-gateway
