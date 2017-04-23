@@ -16,7 +16,7 @@ fatal() {
 }
 
 info "Building ..."
-docker build -t netceteragroup/rpi-ttn-gateway
+docker build -t netceteragroup/rpi-ttn-gateway .
 
 if [[ $? -gt 0 ]]; then
   fatal "Build failed!"
