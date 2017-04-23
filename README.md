@@ -22,7 +22,6 @@ Here are the steps to get the host environment ready for this image:
 1. Restart the Pi
 1. Find the Pi MAC address (required in next step) by running `cat /sys/class/net/eth0/address`
 1. Run
-
 	```bash
 	docker run -it --privileged --net=host --restart=always \
 	-e GATEWAY_EUI=RASPBERRY_PI_MAC_ADDRESS \
