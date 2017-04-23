@@ -1,5 +1,5 @@
 # Raspberry PI TTN gateway
-[![Docker Pulls](https://img.shields.io/docker/pulls/netceteragroup/rpi-ttn-gateway.svg)](https://hub.docker.com/r/netceteragroup/rpi-ttn-gateway/) [![Docker Stars](https://img.shields.io/docker/stars/netceteragroup/rpi-ttn-gateway.svg)](https://hub.docker.com/r/netceteragroup/rpi-ttn-gateway/) [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/netceteragroup/rpi-ttn-gateway/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/netceteragroup/rpi-ttn-gateway.svg?branch=master)](https://travis-ci.org/netceteragroup/rpi-ttn-gateway) [![Docker Pulls](https://img.shields.io/docker/pulls/netceteragroup/rpi-ttn-gateway.svg)](https://hub.docker.com/r/netceteragroup/rpi-ttn-gateway/) [![Docker Stars](https://img.shields.io/docker/stars/netceteragroup/rpi-ttn-gateway.svg)](https://hub.docker.com/r/netceteragroup/rpi-ttn-gateway/) [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/netceteragroup/rpi-ttn-gateway/blob/master/LICENSE)
 
 Raspberry PI TTN gateway image based on Hypriot. This dockerfile is heavily influenced by the install script from [The Things Network iC880a-based gateway](https://github.com/ttn-zh/ic880a-gateway).
 
