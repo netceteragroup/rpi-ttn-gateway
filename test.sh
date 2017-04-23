@@ -3,74 +3,23 @@
 # Run a test for all images.
 
 set -uo pipefail
+FILE=docker.output
 
-info() {
-  printf "%s\n" "$@"
-}
+# Run the freshly built image and execute a dummy command capturing its output
+docker run netceteragroup/rpi-ttn-gateway cat /opt/ttn-gateway/bin/start.sh  > $FILE
 
-fatal() {
-  printf "**********\n"
-  printf "%s\n" "$@"
-  printf "**********\n"
-  exit 1
-}
-
-cd $(cd ${0%/*} && pwd -P);
-
-versions=( "$@" )
-if [ ${#versions[@]} -eq 0 ]; then
-  versions=( */ )
+if [ -f $FILE ]; then
+  if grep -q "# Reset iC880a PIN" docker.output && grep -q "./poly_pkt_fwd" docker.output; then
+    printf "Docker image test succeeded\n"
+    rm -f $FILE
+  else
+    printf "Docker image test failed, output doesn't contain expected strings\n"
+    rm -f $FILE
+    exit 1
+  fi
+else
+   echo "File $FILE does not exist."
+   exit 1
 fi
-versions=( "${versions[@]%/}" )
-
-for version in "${versions[@]}"; do
-
-  echo $version
-  tag=$(cat $version/Dockerfile | grep "ENV NODE_VERSION" | cut -d' ' -f3)
-
-  info "Testing NodeJS version $tag..."
-  docker run hypriot/rpi-node:$tag node --version
-
-  if [[ $? -gt 0 ]]; then
-    fatal "Test of $tag failed!"
-  else
-    info "Test of $tag succeeded."
-  fi
-
-  info "Testing Yarn..."
-  docker run hypriot/rpi-node:$tag yarn --version
-
-  if [[ $? -gt 0 ]]; then
-    fatal "Test of $tag failed!"
-  else
-    info "Test of $tag succeeded."
-  fi
-
-  variants=( slim onbuild )
-
-  for variant in "${variants[@]}"; do
-    info "Testing NodeJS version $tag-$variant variant..."
-    docker run hypriot/rpi-node:$tag-$variant node --version
-
-    if [[ $? -gt 0 ]]; then
-      fatal "Test of $tag-$variant failed!"
-    else
-      info "Test of $tag-$variant succeeded."
-    fi
-
-    info "Testing Yarn-$variant variant..."
-    docker run hypriot/rpi-node:$tag yarn --version
-
-    if [[ $? -gt 0 ]]; then
-      fatal "Test of $tag failed!"
-    else
-      info "Test of $tag succeeded."
-    fi
-
-  done
-
-done
-
-info "All tests successful!"
 
 exit 0

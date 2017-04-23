@@ -1,3 +1,4 @@
+# inspired by https://github.com/hypriot/rpi-node
 sudo: required
 services:
 - docker
@@ -5,15 +6,13 @@ language: bash
 env:
   #
 script:
-# prepare qemu
+# prepare QEMU
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
-# build image
 - ./build.sh
-# test image
-#- ./test.sh $VERSION
+- ./test.sh
 # push image
-#- >
-#  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-#    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-#    ./push.sh $VERSION
-#  fi
+- >
+  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+    ./push.sh
+  fi

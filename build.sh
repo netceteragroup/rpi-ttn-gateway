@@ -4,24 +4,7 @@
 
 set -uo pipefail
 
-info() {
-  printf "%s\n" "$@"
-}
-
-fatal() {
-  printf "**********\n"
-  printf "%s\n" "$@"
-  printf "**********\n"
-  exit 1
-}
-
-info "Building ..."
+printf "Starting Docker build...\n"
 docker build -t netceteragroup/rpi-ttn-gateway .
-
-if [[ $? -gt 0 ]]; then
-  fatal "Build failed!"
-else
-  info "Build succeeded."
-fi
 
 exit 0
