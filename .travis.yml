@@ -8,7 +8,7 @@ script:
 # prepare qemu
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
-- ./build.sh $VERSION
+- ./build.sh
 # test image
 #- ./test.sh $VERSION
 # push image
