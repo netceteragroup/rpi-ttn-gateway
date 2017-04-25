@@ -28,7 +28,7 @@ Here are the steps to get the host environment ready for this image:
 	-e GATEWAY_LAT=YOUR_LATITUDE \
 	-e GATEWAY_LON=YOUR_LONGITUDE \
 	-e GATEWAY_ALT=YOUR_ALTITUDE \
-	-e GATEAY_EMAIL=YOUR_EMAIL \
+	-e GATEWAY_EMAIL=YOUR_EMAIL \
 	-e GATEWAY_NAME=YOUR_GATEWAY_NAME \
 	netceteragroup/rpi-ttn-gateway
 	```
