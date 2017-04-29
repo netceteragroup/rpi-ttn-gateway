@@ -34,7 +34,10 @@ Here are the steps to get the host environment ready for this image:
 	```
 
 ## Optional: Building the image yourself
-To build the image run
+To build a (potentially customized) image yourself do as follows:
 ```bash
-docker build -t rpi-ttn-gateway . 
+$ git clone https://github.com/netceteragroup/rpi-ttn-gateway
+$ cd rpi-ttn-gateway
+$ docker build -t <your-handle-here>/rpi-ttn-gateway . 
 ```
+`<your-handle-here>` can be anything that is uniquely you (e.g. name) but you might also use `rpi-ttn-gateway` w/o any "prefix".
