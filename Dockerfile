@@ -40,7 +40,6 @@ RUN ln -s $INSTALL_DIR/packet_forwarder/poly_pkt_fwd/poly_pkt_fwd $INSTALL_DIR/b
 RUN cp -f $INSTALL_DIR/packet_forwarder/poly_pkt_fwd/global_conf.json $INSTALL_DIR/bin/global_conf.json
 
 RUN cp ~/ic880a-gateway/start.sh $INSTALL_DIR/bin/
-RUN sed -i -e 's/SX1301_RESET_BCM_PIN=25/SX1301_RESET_BCM_PIN=17/g' $INSTALL_DIR/bin/start.sh
 
 COPY local_conf_template.json $INSTALL_DIR/bin/
 COPY cmd.sh $INSTALL_DIR/bin/
