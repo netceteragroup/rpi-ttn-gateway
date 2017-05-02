@@ -9,7 +9,7 @@ before_install:
 # terminate build if Dockerfile wasn't updated in one of the commits included in the changeset
 - |
     echo "${TRAVIS_COMMIT_RANGE} -> ${TRAVIS_COMMIT_RANGE/.../..} (travis-ci/travis-ci#4596)"
-    if ! git diff --name-only ${TRAVIS_COMMIT_RANGE/.../..} | grep -q Dockerfile
+    if ! git diff --name-only "${TRAVIS_COMMIT_RANGE/.../..}" | grep -q Dockerfile
     then
       echo "Dockerfile was not updated, stopping build."
       exit

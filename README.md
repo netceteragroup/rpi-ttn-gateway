@@ -24,6 +24,7 @@ Here are the steps to get the host environment ready for this image:
 1. Run
 	```bash
 	docker run -it --privileged --net=host --restart=always \
+	-e PI_RESET_PIN=<optional-see-explanation-below> \
 	-e GATEWAY_EUI=RASPBERRY_PI_MAC_ADDRESS \
 	-e GATEWAY_LAT=YOUR_LATITUDE \
 	-e GATEWAY_LON=YOUR_LONGITUDE \
@@ -32,6 +33,12 @@ Here are the steps to get the host environment ready for this image:
 	-e GATEWAY_NAME=YOUR_GATEWAY_NAME \
 	netceteragroup/rpi-ttn-gateway
 	```
+	* `PI_RESET_PIN` may or may not be required depending on how the concentrator is connected to the Pi. The default 
+	reset pin configured by [the start script](https://github.com/ttn-zh/ic880a-gateway/blob/spi/start.sh#L4) is 25. 
+	Installations with simple backplanes such as [the one from Gnz](https://www.tindie.com/products/gnz/imst-ic880a-lorawan-backplane-kit/) 
+	 can go with the default value. More elaborate backplanes might rewire the reset pin. The [one from CH2i](https://github.com/ch2i/iC880A-Raspberry-PI) 
+	 for example uses 17. Hence, you would say `docker run ... -e PI_RESET_PIN=17 ...`.
+	* `GATEWAY_EUI` is the Pi MAC address from the previous step without colons (-> 8byte number)
 
 ## Optional: Building the image yourself
 To build a (potentially customized) image yourself do as follows:
