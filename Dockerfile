@@ -24,7 +24,7 @@ RUN make
 RUN make install
 RUN ldconfig
 
-RUN git clone https://github.com/TheThingsNetwork/lora_gateway.git $INSTALL_DIR/lora_gateway
+RUN git clone -b legacy https://github.com/TheThingsNetwork/lora_gateway.git $INSTALL_DIR/lora_gateway
 
 RUN cp $INSTALL_DIR/lora_gateway/libloragw/99-libftdi.rules /etc/udev/rules.d/99-libftdi.rules
 RUN sed -i -e 's/PLATFORM= kerlink/PLATFORM= imst_rpi/g' $INSTALL_DIR/lora_gateway/libloragw/library.cfg
@@ -32,7 +32,7 @@ RUN sed -i -e 's/PLATFORM= kerlink/PLATFORM= imst_rpi/g' $INSTALL_DIR/lora_gatew
 WORKDIR $INSTALL_DIR/lora_gateway
 RUN make
 
-RUN git clone https://github.com/TheThingsNetwork/packet_forwarder.git $INSTALL_DIR/packet_forwarder
+RUN git clone -b legacy https://github.com/TheThingsNetwork/packet_forwarder.git $INSTALL_DIR/packet_forwarder
 WORKDIR $INSTALL_DIR/packet_forwarder
 RUN make
 RUN mkdir $INSTALL_DIR/bin
