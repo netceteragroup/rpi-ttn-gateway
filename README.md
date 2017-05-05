@@ -40,7 +40,7 @@ Here are the steps to get the host environment ready for this image:
 	 for example uses 17. Hence, you would say `docker run ... -e PI_RESET_PIN=17 ...`.
 	* `GATEWAY_EUI` is the Pi MAC address from the previous step without colons (-> 8byte number)
 
-## Optional: Building the image yourself
+## Building the image yourself
 To build a (potentially customized) image yourself do as follows:
 ```bash
 $ git clone https://github.com/netceteragroup/rpi-ttn-gateway
@@ -48,3 +48,9 @@ $ cd rpi-ttn-gateway
 $ docker build -t <your-handle-here>/rpi-ttn-gateway . 
 ```
 `<your-handle-here>` can be anything that is uniquely you (e.g. name) but you might also use `rpi-ttn-gateway` w/o any "prefix".
+
+## Security considerations
+Just a few obvious measures you can/should think about before you release your new gateway into the wild.
+- It does help if the gateway is connected to the internet through a private network that's hard to penerate.
+- Change the default password: connect to the Pi and run `passwd` to use a custom password.
+- Change the default hostname: edit `/boot/device-init.yaml` and modify the `hostname` attribute ([source](https://blog.hypriot.com/faq/#how-can-i-change-the-hostname)).
