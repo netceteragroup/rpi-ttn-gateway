@@ -25,6 +25,7 @@ Here are the steps to get the host environment ready for this image:
 	```bash
 	docker run -it --privileged --net=host --restart=always \
 	-e PI_RESET_PIN=<optional-see-explanation-below> \
+	-e GATEWAY_REGION=<optional-see-explanation-below> \
 	-e GATEWAY_EUI=RASPBERRY_PI_MAC_ADDRESS \
 	-e GATEWAY_LAT=YOUR_LATITUDE \
 	-e GATEWAY_LON=YOUR_LONGITUDE \
@@ -38,6 +39,21 @@ Here are the steps to get the host environment ready for this image:
 	Installations with simple backplanes such as [the one from Gnz](https://www.tindie.com/products/gnz/imst-ic880a-lorawan-backplane-kit/) 
 	 can go with the default value. More elaborate backplanes might rewire the reset pin. The [one from CH2i](https://github.com/ch2i/iC880A-Raspberry-PI) 
 	 for example uses 17. Hence, you would say `docker run ... -e PI_RESET_PIN=17 ...`.
+
+	* `GATEWAY_REGION` is optional and defaults to `EU`, it denotes the LoRaWAN region your gateway operates in according 
+	   to the below frequency table. The TTN server to use is derived from the region.
+
+	  |Region|Frequency                     |
+	  |:-----|:-----------------------------|
+	  |EU    |433 and 863-870 MHz           |
+	  |US    |America, 902-928 MHz          |
+	  |CN    |China, 470-510 and 779-787 MHz|
+	  |AU    |Australia, 915-928 MHz        |
+	  |AS    |Southeast Asia, 923 MHz       |
+	  |KR    |Korea, 920-923 MHz            |
+
+	  Check [The Things Network frequencies-by-country page](https://www.thethingsnetwork.org/wiki/LoRaWAN/Frequencies/By-Country) for details.
+
 	* `GATEWAY_EUI` is the Pi MAC address from the previous step without colons (-> 8byte number)
 
 ## Building the image yourself
