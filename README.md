@@ -54,7 +54,7 @@ Here are the steps to get the host environment ready for this image:
 
 	  Check [The Things Network frequencies-by-country page](https://www.thethingsnetwork.org/wiki/LoRaWAN/Frequencies/By-Country) for details.
 
-	* `GATEWAY_EUI` is the Pi MAC address from the previous step without colons (-> 8byte number)
+	* `GATEWAY_EUI` is the lower-case Pi MAC address from the previous step without colons in EUI-64 format (64-bits). To [turn your 48-bit MAC address into EUI-64](https://en.wikipedia.org/wiki/MAC_address#Address_details) split it in half and inject `fffe` (e.g. `b827eb8684a2` → `b827ebfffe8684a2`).
 
 ## Building the image yourself
 To build a (potentially customized) image yourself do as follows:
