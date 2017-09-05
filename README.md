@@ -26,7 +26,7 @@ Here are the steps to get the host environment ready for this image:
 	docker run -it --privileged --net=host --restart=always \
 	-e PI_RESET_PIN=<optional-see-explanation-below> \
 	-e GATEWAY_REGION=<optional-see-explanation-below> \
-	-e GATEWAY_EUI=RASPBERRY_PI_MAC_ADDRESS \
+	-e GATEWAY_EUI=<EUI-identified-in-previous-step> \
 	-e GATEWAY_LAT=YOUR_LATITUDE \
 	-e GATEWAY_LON=YOUR_LONGITUDE \
 	-e GATEWAY_ALT=YOUR_ALTITUDE \
@@ -53,8 +53,6 @@ Here are the steps to get the host environment ready for this image:
 	  |KR    |Korea, 920-923 MHz            |
 
 	  Check [The Things Network frequencies-by-country page](https://www.thethingsnetwork.org/wiki/LoRaWAN/Frequencies/By-Country) for details.
-
-	* `GATEWAY_EUI` is the lower-case Pi MAC address from the previous step without colons in EUI-64 format (64-bits).
 
 ## Building the image yourself
 To build a (potentially customized) image yourself do as follows:
