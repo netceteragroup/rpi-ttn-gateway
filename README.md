@@ -20,7 +20,7 @@ Here are the steps to get the host environment ready for this image:
 	* Set correct timezone: `4 Localisation Options > I2 Change Timezones` 
 	* Enable SPI interface: `5 Interfacing Options > P4 SPI > Yes` 
 1. Restart the Pi
-1. Find the Pi MAC address (required in next step) by running `cat /sys/class/net/eth0/address`
+1. Find the Pi MAC address and generate gateway EUI (required in next step) by running `cat /sys/class/net/eth0/address | awk -F\: '{print $1$2$3"fffe"$4$5$6}'`. This turns the [48-bit MAC address into EUI-64](https://en.wikipedia.org/wiki/MAC_address#Address_details), splits it in half and injects `fffe` (e.g. `b827eb8684a2` → `b827ebfffe8684a2`).
 1. Run
 	```bash
 	docker run -it --privileged --net=host --restart=always \
@@ -54,7 +54,7 @@ Here are the steps to get the host environment ready for this image:
 
 	  Check [The Things Network frequencies-by-country page](https://www.thethingsnetwork.org/wiki/LoRaWAN/Frequencies/By-Country) for details.
 
-	* `GATEWAY_EUI` is the lower-case Pi MAC address from the previous step without colons in EUI-64 format (64-bits). To [turn your 48-bit MAC address into EUI-64](https://en.wikipedia.org/wiki/MAC_address#Address_details) split it in half and inject `fffe` (e.g. `b827eb8684a2` → `b827ebfffe8684a2`).
+	* `GATEWAY_EUI` is the lower-case Pi MAC address from the previous step without colons in EUI-64 format (64-bits).
 
 ## Building the image yourself
 To build a (potentially customized) image yourself do as follows:
