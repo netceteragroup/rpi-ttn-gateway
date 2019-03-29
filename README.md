@@ -54,6 +54,11 @@ Here are the steps to get the host environment ready for this image:
 
 	  Check [The Things Network frequencies-by-country page](https://www.thethingsnetwork.org/wiki/LoRaWAN/Frequencies/By-Country) for details.
 
+## Running as a deamon
+Item 9 above documents the Docker run command. If you would rather want to run the TTN container in daemon mode rather than interactive mode you would replace `-dt` with `-it`. This will put the Docker container process into the background and not block the CLI but you won't see the log output that normally spills to the console.
+
+`docker logs <container-id>` could make that visible again if necessary. Or `docker attach <container-id>`. Or `docker exec -i <container-id> /bin/bash` and then poke around the container.
+
 ## Building the image yourself
 To build a (potentially customized) image yourself do as follows:
 ```bash
