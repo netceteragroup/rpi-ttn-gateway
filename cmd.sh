@@ -13,18 +13,10 @@ else
   fi
 fi
 
-defaultRegion="EU"
-if [ -z "$GATEWAY_REGION" ]; then
-  echo "GATEWAY_REGION env variable not set, using default region '$defaultRegion')"
-else
-  if [ "$GATEWAY_REGION" == $defaultRegion ]; then
-    echo "GATEWAY_REGION env variable is the same as the default region -> no changes"
-  else
-    echo "Setting gateway region to '$GATEWAY_REGION'"
-    region=$(echo "${GATEWAY_REGION}" | tr "[:upper:]" "[:lower:]")
-    sed -i -e "s/router.eu.thethings/router.$region.thethings/g" ./local_conf_template.json
-  fi
-fi
+# TTN API server options
+export TTN_GATEWAY_SERVER_URL=${TTN_GATEWAY_SERVER_URL:-eu1.cloud.thethings.network}
+export TTN_GATEWAY_PORT_UP=${TTN_GATEWAY_PORT_UP:-1700}
+export TTN_GATEWAY_PORT_DOWN=${TTN_GATEWAY_PORT_DOWN:-1700}
 
 # inject the values provided by the user into the template
 envsubst < local_conf_template.json > local_conf.json

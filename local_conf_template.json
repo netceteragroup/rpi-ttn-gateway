@@ -3,9 +3,9 @@
     "gateway_ID": "${GATEWAY_EUI}",
     "servers": [
       {
-        "server_address": "router.eu.thethings.network",
-        "serv_port_up": 1700,
-        "serv_port_down": 1700,
+        "server_address": "${TTN_GATEWAY_SERVER_URL}",
+        "serv_port_up": ${TTN_GATEWAY_PORT_UP},
+        "serv_port_down": ${TTN_GATEWAY_PORT_DOWN},
         "serv_enabled": true
       }
     ],
