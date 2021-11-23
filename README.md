@@ -39,7 +39,7 @@ Here are the steps to get the host environment ready for this image:
 	Installations with simple backplanes such as [the one from Gnz](https://www.tindie.com/products/gnz/imst-ic880a-lorawan-backplane-kit/)
 	 can go with the default value. More elaborate backplanes might rewire the reset pin. The [one from CH2i](https://github.com/ch2i/iC880A-Raspberry-PI)
 	 for example uses 17. Hence, you would say `docker run ... -e PI_RESET_PIN=17 ...`.
-	 * `TTN_GATEWAY_SERVER_URL` URL of the TTN API endpoint server to use, the default is `eu1.cloud.thetings.network`. Server address for other regions are listed here:
+	 * `TTN_GATEWAY_SERVER_URL` URL of the TTN API endpoint server to use, the default is `eu1.cloud.thethings.network`. Server address for other regions are listed here:
   https://www.thethingsindustries.com/docs/getting-started/ttn/addresses/
 
 ## Running as a deamon
